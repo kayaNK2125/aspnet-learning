@@ -1,0 +1,22 @@
+<form class="w-50 mx-auto mt-5 p-4 border rounded shadow">
+
+    <h2 class="text-center mb-4">Login</h2>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Enter email">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="Enter password">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        Submit
+    </button>
+
+</form>
+
+@* New User? <a href="/Auth/registration"> Register Here </a> 1st way to redirect to registraton page 2nd way:*@
+ New User? <a asp-action="Registration"> Register Here </a>

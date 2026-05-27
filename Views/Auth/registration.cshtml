@@ -1,0 +1,28 @@
+@using FirstMVCWebApp.Dto
+@model UserDto
+
+<form class="w-50 mx-auto mt-5 p-4 border rounded shadow"  asp-action="CreateUser">
+  asp-action="CreateUser"
+    <h2 class="text-center mb-4">Register</h2>
+
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" asp-for="Username" placeholder="Enter username"> 
+        @* Username acces UserDto model  *@
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" asp-for="Email" placeholder="Enter email">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" asp-for="Password" placeholder="Enter password">
+    </div>
+
+    <input type="submit" class="btn btn-success w-100" value="Submit">
+
+</form>
+
+Existing User? <a asp-action="login"> Login Here </a>
