@@ -1,0 +1,26 @@
+﻿/*normal css file*/
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size : 14px;
+}
+
+header {
+    height: 60px;
+    background-color: blueviolet;
+    color: white;
+}
+
+#middle {
+    height: 400px;
+    background-color:gray;
+}
+
+footer {
+    height: 200px;
+    background-color: blueviolet;
+    color: white;                        
+}
