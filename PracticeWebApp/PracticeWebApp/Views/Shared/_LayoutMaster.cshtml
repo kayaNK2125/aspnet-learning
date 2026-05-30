@@ -8,14 +8,44 @@
 </head>
 <body>
     <header>
+        <div class="logo">
+            <h1> Logo </h1>
+        </div>
 
+        <div class="menu">
+		<ul>
+              <li> <a href="/Guest/Home">Home</a></li>
+              <li> <a href="/Guest/AboutUs">About Us</a></li>
+              <li> <a href="/Guest/Services">Services</a></li>
+              <li> <a href="/Guest/Gallery">Gallery</a></li>
+              <li> <a href="/Guest/ContactUs">Contact Us</a></li>
+          </ul>
+    </div>
     </header>
-    <div id=middlepart">
+    <div id="middlepart">
         @RenderBody()
         @* @RenderBody() method is used to render the child page content *@
     </div>
     <footer>
+        <div class="footerpart">
+            <h3> About Us </h3>   
+            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="footerpart">
+            <h3> Main Menu </h3>
 
-</footer>
+            <ul>
+                <li> <a href="/Guest/Home">Home</a></li>
+                <li> <a href="/Guest/AboutUs">About Us</a></li>
+                <li> <a href="/Guest/Services">Services</a></li>
+                <li> <a href="/Guest/Gallery">Gallery</a></li>
+                <li> <a href="/Guest/ContactUs">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footerpart">
+            <h3> Social Icons </h3>
+            
+        </div>
+    </footer>
 </body>
 </html>

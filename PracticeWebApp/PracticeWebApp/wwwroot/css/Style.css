@@ -9,18 +9,57 @@ body {
 }
 
 header {
-    height: 60px;
+    height:100px;
     background-color: blueviolet;
     color: white;
 }
 
-#middle {
-    height: 400px;
-    background-color:gray;
+.logo {
+    float: left;
+    width: 40%;
+}
+
+.menu {
+    float: right;
+    padding-top:15px;
+    width: 70%;
+}
+
+    .menu ul li {
+        display: inline-block;
+        border-radius: 10px;
+        text-align: center;
+        margin-left: 20px;
+        background-color:grey;
+        width:150px;
+        height: 30px;
+    }
+     .menu ul li:hover{
+         background-color:black;
+         color:white;
+     }
+        .menu ul li a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+/*            hide underline below pages name*/
+        }
+
+#middlepart {
+    min-height: calc(100vh - 300px);
+    background-color: gray;
 }
 
 footer {
     height: 200px;
     background-color: blueviolet;
     color: white;                        
+}
+
+.footerpart {  
+    float: left;
+    margin-left:20px;
+    width: 30%;
+    height: 100%;
+/*    border: 1px solid red;*/
 }
