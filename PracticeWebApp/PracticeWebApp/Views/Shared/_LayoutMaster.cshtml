@@ -1,51 +1,80 @@
-﻿<!DOCTYPE html>
+﻿<body class="d-flex flex-column min-vh-100">
+	<link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+	@* <link href="~/css/style.css" rel="stylesheet" /> our own css style *@
+    <stytle>
+	
+    </stytle>
+    <header class="container-fluid bg-success">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="img-fluid" src="https://static.cdnlogo.com/logos/m/48/microsoft-dot-net.svg" width="50px"  alt="Logo" /> 
+				<b> DOTNET Core Learning </b>
+            </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-	<link href="~/css/style.css" rel="stylesheet" />
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <h1> Logo </h1>
+            <div class="col-sm-8">
+                @* <ul class="nav">
+                    <li class="nav-item"><a href="/Guest/Home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/Guest/AboutUs" class="nav-link">About Us</a></li>
+                    <li class="nav-item"><a href="/Guest/Services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="/Guest/Gallery" class="nav-link">Gallery</a></li>
+                    <li class="nav-item"><a href="/Guest/ContactUs" class="nav-link">Contact Us</a></li>
+                </ul> *@
+
+                <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="/Guest/Home">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Guest/AboutUs">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Guest/Services">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Guest/Gallery">Gallery</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Guest/ContactUs">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+            </div>
         </div>
-
-        <div class="menu">
-		<ul>
-              <li> <a href="/Guest/Home">Home</a></li>
-              <li> <a href="/Guest/AboutUs">About Us</a></li>
-              <li> <a href="/Guest/Services">Services</a></li>
-              <li> <a href="/Guest/Gallery">Gallery</a></li>
-              <li> <a href="/Guest/ContactUs">Contact Us</a></li>
-          </ul>
-    </div>
     </header>
-    <div id="middlepart">
-        @RenderBody()
-        @* @RenderBody() method is used to render the child page content *@
-    </div>
-    <footer>
-        <div class="footerpart">
-            <h3> About Us </h3>   
-            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.</p>
-        </div>
-        <div class="footerpart">
-            <h3> Main Menu </h3>
 
-            <ul>
-                <li> <a href="/Guest/Home">Home</a></li>
-                <li> <a href="/Guest/AboutUs">About Us</a></li>
-                <li> <a href="/Guest/Services">Services</a></li>
-                <li> <a href="/Guest/Gallery">Gallery</a></li>
-                <li> <a href="/Guest/ContactUs">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="footerpart">
-            <h3> Social Icons </h3>
-            
+    <main class="container-fluid bg-secondary flex-grow-1">
+        @RenderBody()
+    </main>
+	
+    <footer class="container-fluid bg-success">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>About Us</h3>
+                <p>Lorem Ipsum ...</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>Main Menu</h3>
+                <ul>
+                    <li><a href="/Guest/Home">Home</a></li>
+                    <li><a href="/Guest/AboutUs">About Us</a></li>
+                    <li><a href="/Guest/Services">Services</a></li>
+                    <li><a href="/Guest/Gallery">Gallery</a></li>
+                    <li><a href="/Guest/ContactUs">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>Social Icons</h3>
+
+                <a href="https://example.com">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/free-instagram-logo-icon-svg-download-png-3649951.png?f=webp&w=128" height="30px" width="30px" alt="Description">
+                </a>
+
+
+
+            </div>
         </div>
     </footer>
+    <script src="~/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
-</html>
