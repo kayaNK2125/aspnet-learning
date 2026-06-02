@@ -1,14 +1,42 @@
-﻿<body class="d-flex flex-column min-vh-100">
-	<link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
-	@* <link href="~/css/style.css" rel="stylesheet" /> our own css style *@
-    <stytle>
-	
-    </stytle>
+﻿<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    @* <link href="~/css/style.css" rel="stylesheet" /> our own css style *@
+    <style>
+            * {
+                margin: 0px;
+            }
+
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+             
+            @@media screeen and (max width: 600px){
+                header {
+                    background-color: red  !important;
+                }
+            }
+			.nav-link {
+                font-size: 25px !important;
+                    color: deeppink !important;
+            }
+            
+    </style>
+</head>
+<body>
     <header class="container-fluid bg-success">
         <div class="row">
             <div class="col-sm-4">
-                <img class="img-fluid" src="https://static.cdnlogo.com/logos/m/48/microsoft-dot-net.svg" width="50px"  alt="Logo" /> 
-				<b> DOTNET Core Learning </b>
+                <a href="https://localhost:7265/">
+                    <img class="img-fluid" src="https://static.cdnlogo.com/logos/m/48/microsoft-dot-net.svg" width="60px" alt="Logo" /> </a>
+                <b> DOTNET Core Learning </b>
             </div>
 
             <div class="col-sm-8">
@@ -44,9 +72,12 @@
 
     <main class="container-fluid bg-secondary flex-grow-1">
         @RenderBody()
+        <br />
+
     </main>
-	
-    <footer class="container-fluid bg-success">
+
+    <footer class="container-fluid bg-success mb-0">
+        <br />
         <div class="row">
             <div class="col-sm-4">
                 <h3>About Us</h3>
@@ -70,9 +101,6 @@
                 <a href="https://example.com">
                     <img src="https://cdn.iconscout.com/icon/free/png-256/free-instagram-logo-icon-svg-download-png-3649951.png?f=webp&w=128" height="30px" width="30px" alt="Description">
                 </a>
-
-
-
             </div>
         </div>
     </footer>
