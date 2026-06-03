@@ -1,0 +1,43 @@
+﻿@model PracticeWebApp.Models.SI
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h1>Index</h1>
+
+<h4>SI</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="_p" class="control-label"></label>
+                <input asp-for="_p" class="form-control" />
+                <span asp-validation-for="_p" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="_r" class="control-label"></label>
+                <input asp-for="_r" class="form-control" />
+                <span asp-validation-for="_r" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="_t" class="control-label"></label>
+                <input asp-for="_t" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+        <p>@ViewBag.Result</p>
+    </div>
+</div>
