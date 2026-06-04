@@ -1,4 +1,9 @@
-﻿@model PracticeWebApp.Models.SI
+﻿@* //view is used to design and coding the user interface of the application. It is responsible for displaying the data to the user and capturing user input.
+In this case, the view is designed to capture the principal amount, rate of interest, and time period for calculating simple interest.
+The form in the view submits the data to the Index action of the SICalcController, which processes the input and calculates the simple interest based on the provided values.
+The result is then displayed back to the user using ViewBag.Result. *@
+
+@model PracticeWebApp.Models.SI
 
 @{
     ViewData["Title"] = "Index";
@@ -8,24 +13,23 @@
 <h1>Index</h1>
 
 <h4>SI</h4>
-<hr />
+<hr />      
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Index">
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<form asp-action="Index">
+			@* Index // This will post the form data to the Index action of the current controller (SICalcController). *@
 
             <div class="form-group">
-                <label asp-for="_p" class="control-label"></label>
+				<label asp-for="_p" class="control-label"></label> 
+                @* // asp-for is a tag helper that generates the appropriate label(Bind) for the _p property of the model. The class "control-label" is added for styling purposes. *@
+               
                 <input asp-for="_p" class="form-control" />
-                <span asp-validation-for="_p" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="_r" class="control-label"></label>
                 <input asp-for="_r" class="form-control" />
-                <span asp-validation-for="_r" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -35,9 +39,34 @@
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+			@* // create button to submit the form data to the Index action of the current controller (SICalcController). The class "btn btn-primary" is added for styling purposes. *@
             </div>
-
         </form>
         <p>@ViewBag.Result</p>
+
+        @* //we can write c-sharp code: *@
+		@{
+			int a = 10;
+			int b = 20;
+			int c = a + b;     
+           }
+
+		<p>Sum of @a and @b is @c</p>
+
+        @* Viewbag Data read EXAMPLE: *@
+        <p> sum of @ViewBag.a and @ViewBag.b is @ViewBag.c </p> 
+		
+        @* ViewData read EXAMPLE: *@
+        <p> sum of @ViewData["e"] and @ViewData["x"] is @ViewData["n"] </p>
+
+        @* TempData read EXAMPLE: *@
+        @* // view /SICalc/TestData *@
+
+        @* //thies sentence will only be properly shown when user click submit button because the values of ViewBag.e, ViewBag.
+        x and ViewBag.
+        d are assigned in the Index action of the SICalcController when the form is submitted.
+        Before submitting the form, these values will be null or not set, so the sentence will not be displayed. 
+        After submitting the form, the values will be assigned and the sentence will be shown with the calculated sum of e and x. *@
+
     </div>
 </div>
