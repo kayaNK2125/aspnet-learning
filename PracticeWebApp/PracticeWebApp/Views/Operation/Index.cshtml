@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h1> Index </h1>
+
+@* <form asp-action="Index"> //this won't work because POST action is named IndexPost, not Index*@
+
+only for last way we done in OperationController 👇👇
+<form asp-action="IndexPost"> 
+    <p><input type="text" name="num1" placeholder="Enter First Number"/></p>
+    <p><input type="text" name="num2" placeholder="Enter Secound Number" /></p>
+    <p><input type="submit" name="btnsub" value="+" /></p>
+    <p><input type="submit" name="btnsub" value="-" /></p>
+    <p><input type="submit" name="btnsub" value="*" /></p>
+    <p><input type="submit" name="btnsub" value="/" /></p>
+</form>
+
+<p> @ViewBag.result </p>

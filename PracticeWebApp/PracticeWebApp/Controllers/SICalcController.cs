@@ -47,14 +47,20 @@ namespace PracticeWebApp.Controllers
         }
 }
 
+/*
+
+There are 3 ways to pass data from Controller to View in ASP.NET Core MVC: 
+
+1) ViewBag - It is a dynamic object that allows you to pass data from the controller to the view. Stores both Data as well as Type information. It is not strongly typed, so you can add any type of data to it without any compile-time checking.
+It is not recommended to use ViewBag for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist. 
+
+2) ViewData - It is a dictionary object that allows you to pass data from the controller to the view. Stores only Data information , not Type information. It is not strongly typed. ViewData passes data from Controller to View. Casting may be required when retrieving values.
+It is not recommended to use ViewData for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist.
+
+3) TempData - It is a dictionary object that allows you to pass data from one request to another request. It is a property of the Controller class and it is available in all the views.It is a strongly typed, so you need to cast the data when you retrieve it in the view. It is not recommended to use TempData for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist.
 
 
-//There are 3 ways to pass data from Controller to View in ASP.NET Core MVC: 
+strongly typed = the compiler lnows the exact type and yells at you use it wrong.
+weekly typed = you only find out it's wrong when the app runs.
 
-//1) ViewBag - It is a dynamic object that allows you to pass data from the controller to the view. Stores both Data as well as Type information. It is not strongly typed, so you can add any type of data to it without any compile-time checking.
-//It is not recommended to use ViewBag for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist. 
-
-//2) ViewData - It is a dictionary object that allows you to pass data from the controller to the view. Stores only Data information , not Type information. It is not strongly typed. ViewData passes data from Controller to View. Casting may be required when retrieving values.
-//It is not recommended to use ViewData for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist.
-
-//3) TempData - It is a dictionary object that allows you to pass data from one request to another request. It is a property of the Controller class and it is available in all the views. It is a strongly typed, so you need to cast the data when you retrieve it in the view. It is not recommended to use TempData for passing large amount of data or complex data structures, because it can lead to performance issues and it can also lead to runtime errors if you try to access a property that does not exist.
+*/
