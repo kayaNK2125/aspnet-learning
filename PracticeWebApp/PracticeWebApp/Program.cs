@@ -28,7 +28,7 @@ namespace PracticeWebApp
             app.MapControllerRoute(
                 name: "default",
                 //pattern: "{controller=First}/{action=Index}/{id?}") //in controler folder, find the controller with the name "First" and then find the action method with the name "Index"
-                pattern: "{controller=Operation}/{action=Index}/{id?}")
+                pattern: "{controller=ActionResult}/{action=MyAds}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
