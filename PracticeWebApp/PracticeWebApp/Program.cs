@@ -1,3 +1,6 @@
+using PracticeWebApp.Models;
+using PracticeWebApp.Services;
+
 namespace PracticeWebApp
 {
     public class Program
@@ -8,7 +11,7 @@ namespace PracticeWebApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<AdditionService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +31,7 @@ namespace PracticeWebApp
             app.MapControllerRoute(
                 name: "default",
                 //pattern: "{controller=First}/{action=Index}/{id?}") //in controler folder, find the controller with the name "First" and then find the action method with the name "Index"
-                pattern: "{controller=ActionResult}/{action=MyAds}/{id?}")
+                pattern: "{controller=Addition}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
