@@ -1,4 +1,4 @@
-﻿@model PracticeWebApp.Models.AdditionModel
+﻿@model PracticeWebApp.Models.Operation_Model
 
 @{
     ViewData["Title"] = "Index";
@@ -30,7 +30,10 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" name="ope" value="+" class="btn btn-primary" />
+                <input type="submit" name="ope" value="-" class="btn btn-primary" />
+                <input type="submit" name="ope" value="*" class="btn btn-primary" />
+                <input type="submit" name="ope" value="/" class="btn btn-primary" />
             </div>
 
         </form>
