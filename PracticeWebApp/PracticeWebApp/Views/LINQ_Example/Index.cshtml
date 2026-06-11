@@ -1,0 +1,29 @@
+﻿@{
+	ViewData["Title"] = "LINQ Example";
+	Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<h1>LINQ Example</h1>
+
+@{
+	<h2> Only Starting With "I" </h2>
+		foreach (var item in ViewBag.data) // Assuming ViewBag.data is a collection of items passed from the controller
+		 {
+		<p> @item </p>
+		 }
+	<hr />
+
+	<h2> Even Numbers </h2>
+		foreach (var item in ViewBag.evenNumbers)
+		 {
+		<p> @item </p> 
+		 }
+	<hr />
+
+	<h2> Square Numbers </h2>
+		foreach (var item in ViewBag.squareNumbers) 
+		 {
+		<p> @item </p>
+		 }
+	<hr />
+}
