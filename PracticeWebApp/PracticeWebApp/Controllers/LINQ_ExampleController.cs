@@ -79,7 +79,77 @@ namespace PracticeWebApp.Controllers
                new LINQ_Employe_Model { Id = 3, Name = "Doe", Department = "Finance", Salary = 55000 },
                new LINQ_Employe_Model { Id = 4, Name = "Smith", Department = "IT", Salary = 70000 },
             };
-            return View(obj.ToList());// ToList() is used to convert the collection to a List, which is often required for data binding in views.
+
+            //var obj1 = obj.Where(e => e.Department == "IT"); // Get employees from IT department
+
+            //var obj1 = obj.OrderByDescending(e => e.Salary); // Salary in descending order
+
+            //var obj1 = obj.OrderByDescending(e => e.Salary).ThenByDescending(e => e.Department); // Salary in descending order and then by Department in descending order
+
+            //var obj1 = obj.Where(e => e.Department == "IT").First(); // First employee from IT department if exists, otherwise it will throw an exception.
+
+            var obj1 = obj.Where(e => e.Department == "I").FirstOrDefault(); // First employee from IT department if exists, otherwise it will return null.
+            if (obj1 != null)
+            {
+                ViewBag.data = "ID is " + obj1.Id + ", Name is " + obj1.Name;
+            }
+            else
+            {
+                ViewBag.data = "No employee found in IT department.";
+            }
+            
+            //ViewBag.data = "ID is " + obj1.Id + ", Name is " + obj1.Name; 
+
+            var itEmployee = obj.Where(e => e.Department == "IT"); 
+            return View(itEmployee.ToList());// ToList() is used to convert the collection to a List, which is often required for data binding in views.
+         
+        }
+
+        public IActionResult GroupByExample()
+        {
+            List<LINQ_Employe_Model> obj = new List<LINQ_Employe_Model>
+            {
+               new LINQ_Employe_Model { Id = 1, Name = "John", Department = "HR", Salary = 50000 },
+               new LINQ_Employe_Model { Id = 2, Name = "Jane", Department = "IT", Salary = 60000 },
+               new LINQ_Employe_Model { Id = 3, Name = "Doe", Department = "Finance", Salary = 55000 },
+               new LINQ_Employe_Model { Id = 4, Name = "Smith", Department = "IT", Salary = 70000 },
+            };
+
+            var groupRecord = obj.GroupBy(e => e.Department) // Group the employees by their department
+                .Select(g => new CountEmp // Select a new object of type CountEmp for each group
+                {
+                Deptname = g.Key,      // The key of the group is the department name
+                TotalEmp = g.Count()   // The total number of employees in each department is the count of the group
+                });
+
+            return View(groupRecord.ToList());
+        }
+
+        public IActionResult JoinExample() 
+        {
+            List<Course> course = new List<Course>
+            {
+               new Course { CourseId = 1, CourseName = "C-Sharp" },
+               new Course { CourseId = 2, CourseName = "Python" },
+               new Course { CourseId = 3, CourseName = "C-Sharp" },
+               new Course { CourseId = 4, CourseName = "Java" },
+            };
+
+            List<Studentcs> student = new List<Studentcs>
+            {
+               new Studentcs { Id = 101, Name = "Alice", CID = 1 },
+               new Studentcs { Id = 102, Name = "Bob", CID = 2 },
+               new Studentcs { Id = 103, Name = "Charlie", CID = 3 },
+               new Studentcs { Id = 104, Name = "David", CID = 4 },
+            };
+
+            var result = student.Join(course, s => s.CID, c => c.CourseId, (s, c) => new joinResult // Join the student and course collections based on the CID and CourseId and select a new object of type joinResult for each matching pair
+            {
+                StudentName = s.Name, // Select the student name
+                CourseName = c.CourseName,  // Select the course namex`   
+                   
+              });
+            return View(result.ToList());
         }
     }
 }

@@ -31,7 +31,7 @@ namespace PracticeWebApp
             app.MapControllerRoute(
                 name: "default",
                 //pattern: "{controller=First}/{action=Index}/{id?}") //in controler folder, find the controller with the name "First" and then find the action method with the name "Index"
-                pattern: "{controller=LINQ_Example}/{action=CollectionExample}/{id?}")
+                pattern: "{controller=LINQ_Example}/{action=JoinExample}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
