@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PracticeWebApp.Models;
 using PracticeWebApp.Services;
 
@@ -12,6 +13,7 @@ namespace PracticeWebApp
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<Operations_Service>(); 
+            builder.Services.AddDbContext<PracticeDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyDatabaseConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
