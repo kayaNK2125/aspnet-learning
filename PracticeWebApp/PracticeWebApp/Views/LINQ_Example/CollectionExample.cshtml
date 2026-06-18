@@ -44,6 +44,9 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.Salary)
 				</td>
+				<td>
+					<a asp-action="FindEmployee" asp-route-id="@item.Id">Edit</a> | <a asp-action="DeleteEmployee" asp-route-id="@item.Id">Delete</a>
+				</td>
 
 
 				@*//this is for the edit, details and delete action links, you can replace the id with the primary key of your model

@@ -47,13 +47,55 @@ Important LINQ Meathods:
  */
 
 
+using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Query;
 using PracticeWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace PracticeWebApp.Controllers
 {
     public class LINQ_ExampleController : Controller
     {
+        private readonly PracticeDBContext _logge;  // Dependency injection of the PracticeDBContext to access the database context
+        public LINQ_ExampleController(PracticeDBContext logger)  // Constructor to initialize the PracticeDBContext through dependency injection
+        {
+            _logge = logger; // Assign the injected PracticeDBContext to the private field _logge for use in the controller's actions
+        }
+
+        public IActionResult AddEmployee()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddEmployee(LINQ_Employe_Model model)
+        {
+            _logge.LINQ_Employes.Add(model); // Add the new employee model to the LINQ_Employes DbSet in the database context
+            _logge.SaveChanges(); // Save the changes to the database
+            return RedirectToAction("CollectionExample");
+        }
+
+        public IActionResult FindEmployee(int id)
+        {
+            var obj = _logge.LINQ_Employes.Find(id);
+            return View(obj);
+        }
+
+        [HttpPost]
+        public IActionResult FindEmployee(LINQ_Employe_Model obj)
+        {
+          _logge.Entry(obj).State = EntityState.Modified; // Mark the employee model as modified in the database context
+            _logge.SaveChanges(); // Update the existing employee model in the LINQ_Employes DbSet in the database context
+            return RedirectToAction("CollectionExample");
+        }
+        public IActionResult DeleteEmployee(int id)
+        {
+            var obj = _logge.LINQ_Employes.Find(id); // Find the employee with the specified id in the LINQ_Employes DbSet
+                _logge.LINQ_Employes.Remove(obj); // Remove the found employee from the LINQ_Employes DbSet
+             _logge.SaveChanges();
+            return RedirectToAction("CollectionExample");
+        }
+
         public IActionResult Index()
         {
             string[] arr = { "INDIA", "USA", "CHINA", "JAPAN", "" };
@@ -72,13 +114,21 @@ namespace PracticeWebApp.Controllers
         }
         public IActionResult CollectionExample()
         {
-            List<LINQ_Employe_Model> obj = new List<LINQ_Employe_Model>
-            {
-               new LINQ_Employe_Model { Id = 1, Name = "John", Department = "HR", Salary = 50000 },
-               new LINQ_Employe_Model { Id = 2, Name = "Jane", Department = "IT", Salary = 60000 },
-               new LINQ_Employe_Model { Id = 3, Name = "Doe", Department = "Finance", Salary = 55000 },
-               new LINQ_Employe_Model { Id = 4, Name = "Smith", Department = "IT", Salary = 70000 },
-            };
+            var obj = _logge.LINQ_Employes.ToList(); // Fetch all employees from the database and convert it to a list
+                       // OR :-
+           //var obj = (from c in _logge.LINQ_Employes select c).ToList(); // Fetch all employees from the database using query syntax
+
+            return View(obj);
+
+            /*
+              List<LINQ_Employe_Model> obj = new List<LINQ_Employe_Model>
+              {
+                 new LINQ_Employe_Model { Id = 1, Name = "John", Department = "HR", Salary = 50000 },
+                 new LINQ_Employe_Model { Id = 2, Name = "Jane", Department = "IT", Salary = 60000 },
+                 new LINQ_Employe_Model { Id = 3, Name = "Doe", Department = "Finance", Salary = 55000 },
+                 new LINQ_Employe_Model { Id = 4, Name = "Smith", Department = "IT", Salary = 70000 },
+              };
+            
 
             //var obj1 = obj.Where(e => e.Department == "IT"); // Get employees from IT department
 
@@ -102,7 +152,9 @@ namespace PracticeWebApp.Controllers
 
             var itEmployee = obj.Where(e => e.Department == "IT"); 
             return View(itEmployee.ToList());// ToList() is used to convert the collection to a List, which is often required for data binding in views.
-         
+         */
+
+
         }
 
         public IActionResult GroupByExample()

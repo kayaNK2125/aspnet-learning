@@ -1,0 +1,44 @@
+﻿@model PracticeWebApp.Models.LINQ_Employe_Model
+
+@{
+    ViewData["Title"] = "AddEmployee";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml"; 
+}
+
+<h1>AddEmployee</h1>
+
+<h4>LINQ_Employe_Model</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEmployee">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
