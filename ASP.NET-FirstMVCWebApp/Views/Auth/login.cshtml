@@ -1,15 +1,20 @@
-<form class="w-50 mx-auto mt-5 p-4 border rounded shadow">
-
+@using FirstMVCWebApp.Dto
+@model UserDto
+<div> @ViewBag.SuccessMessage </div>
+<div> @ViewBag.ErrorMessage </div>
+<form class="w-50 mx-auto mt-5 p-4 border rounded shadow" asp-action="LoginUser">
+	@* //login user method in AuthController *@
+    
     <h2 class="text-center mb-4">Login</h2>
 
     <div class="mb-3">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" placeholder="Enter email">
+        <input type="email" class="form-control" name="email" asp-for="Email" placeholder="Enter email">
     </div>
 
     <div class="mb-3">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" placeholder="Enter password">
+        <input type="password" class="form-control" name="password" asp-for="Password" placeholder="Enter password">
     </div>
 
     <button type="submit" class="btn btn-primary w-100">

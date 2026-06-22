@@ -5,9 +5,9 @@ namespace FirstMVCWebApp.Models
     public class User
     {
         //creating colums:
-        [Key] //Id key hai jo uniq hoga hr condition mein
+        [Key] //Id is primary key
         public int Id { get; set; }
-        public string Username { get; set; } = null!; //suppressing compiler warning null nai hogi letter aajayega username sure
+        public string Username { get; set; } = null!; // non-nullable
         public string Email {get; set;} = null!;
         public string password {get; set;} = null!;
     }
