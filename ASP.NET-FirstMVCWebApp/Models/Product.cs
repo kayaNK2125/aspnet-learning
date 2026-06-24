@@ -1,7 +1,10 @@
-﻿namespace FirstMvcWebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FirstMvcWebApp.Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         public string ProductName { get; set; } = null!;
         public string Description { get; set; } = null!;
@@ -9,3 +12,5 @@
         public string Color { get; set; } = null!;
     }
 }
+
+// In Easy Language: Product = DataBase Entity

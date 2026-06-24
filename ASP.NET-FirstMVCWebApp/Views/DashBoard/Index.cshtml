@@ -1,4 +1,8 @@
-﻿@{
+﻿@using FirstMvcWebApp.Dto
+@model List<ProductDto> 
+@* // @model List<ProductDto> tells the view that it will receive a list of ProductDto objects from the controller, allowing it to access their properties safely. *@
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
@@ -7,7 +11,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Product Dashboard</h2>
 
-        <a asp-action="AddProduct" class="btn btn-success">
+        <a asp-action="ProductForm" class="btn btn-success">
             + Add Product
         </a>
     </div>
@@ -25,39 +29,28 @@
         </thead>
 
         <tbody>
+            @if (Model.Count > 0)
+            {
+                foreach (var product in Model)
+                {
 
-            <tr>
-                <td>iPhone 16</td>
-                <td>Apple Smartphone</td>
-                <td>₹89,999</td>
-                <td>Black</td>
-                <td>
-                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Galaxy S25</td>
-                <td>Samsung Smartphone</td>
-                <td>₹74,999</td>
-                <td>Blue</td>
-                <td>
-                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>MacBook Air</td>
-                <td>Apple Laptop</td>
-                <td>₹1,09,999</td>
-                <td>Silver</td>
-                <td>
-                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
+                    <tr>
+                        <td>@product.ProductName</td>
+                        <td>@product.Description</td>
+                        <td>$@product.Price</td>
+                        <td>@product.Color</td>
+                        <td>
+                            <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="DeleteProduct" asp-route-productid="@product.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                     </tr>
+                
+                }
+            }
+            else
+            {
+                <tr> No Product Are Available! </tr>
+            }
 
         </tbody>
 
