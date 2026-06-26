@@ -1,8 +1,13 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using FirstMvcWebApp.Data;
 using FirstMVCWebApp.Dto;
 using FirstMVCWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FirstMvcWebApp.Controllers
 {
@@ -75,6 +80,16 @@ namespace FirstMvcWebApp.Controllers
                 {
                     if (isUserExist.password == dto.Password)
                     {
+                    var token = GenerateJwtToken(dto); // Generate JWT token for the user if password is correct and user exists
+
+                    Response.Cookies.Append("jwt_Token", token, new CookieOptions // Set the JWT token in a cookie with HttpOnly
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict,
+                        Expires = DateTime.UtcNow.AddHours(1)
+                    });
+
                         return RedirectToAction("Index", "DashBoard");
                     }
                     else
@@ -84,6 +99,32 @@ namespace FirstMvcWebApp.Controllers
                     }
                 }
             
+        }
+        private string GenerateJwtToken(UserDto dto)
+        {
+            var jwtHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes("CqMHaCgQsySftoZrYg0nBbiW2hqw78YuK92ONuWqdyU");
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(new[]
+                    {
+
+                        new Claim(ClaimTypes.Name, dto.Email), // storing email in claim to identify user
+
+                    }),
+                Expires = DateTime.UtcNow.AddMinutes(30), // token expiration time
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = jwtHandler.CreateToken(tokenDescriptor);
+            return jwtHandler.WriteToken(token);
+        }
+
+        public IActionResult LogoutUser()
+        {
+            Response.Cookies.Delete("jwt_Token");  // Delete Cookie -> Server no longer knows who you are
+            return RedirectToAction("Login");
         }
     }
 }
